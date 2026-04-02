@@ -1,0 +1,38 @@
+day = int(input())
+month = int(input())
+year = int(input())
+
+if year <= 0:
+	print("Invalid Date")
+
+
+elif month < 1 or month > 12:
+	print("Invalid Date")
+
+else:
+	if month in [1, 3, 5, 7, 8, 10, 12]:
+		days = 31
+	elif month in [4, 6, 9, 11]:
+		days = 30
+	else: 
+		if (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):
+			days = 29
+		else:
+			days = 28
+
+
+	if day < 1 or day > days:
+		print("Invalid Date")
+	else:
+
+		if day < days:
+			day += 1
+		else:
+			day = 1
+			if month == 12:
+				month = 1
+				year += 1
+			else:
+				month += 1
+
+		print(f"{day:02d}-{month:02d}-{year}")
